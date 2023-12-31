@@ -6,22 +6,33 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 flippedScale = new Vector3(-1, 1, 1);
 
+    private Rigidbody2D rb;
+
+    float moveSpeed = 10f;
+
     float moveX;
+    float moveY;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Movement();
+        Direction();
     }
 
     private void Movement()
     {
         moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
+
+        rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+
+
 
 
     }
