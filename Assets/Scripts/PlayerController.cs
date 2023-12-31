@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Vector3 flippedScale = new Vector3(-1, 1, 1);
+
+    float moveX;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void Movement()
+    {
+        moveX = Input.GetAxis("Horizontal");
+
+
+    }
+
+    private void Direction()
+    {
+        if (moveX > 0)
+        {
+            transform.localScale = flippedScale;
+        } else if (moveX < 0)
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 }
