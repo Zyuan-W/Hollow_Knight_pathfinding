@@ -153,11 +153,17 @@ public class PlayerController : MonoBehaviour
 
     // private void test()
     // {
-    //     // press c let object move to right 
-    //     if (Input.GetKeyDown(KeyCode.C))
+    //     // if facing right move toward to (1,1)
+    //     if (isFancingRight)
     //     {
-    //         Debug.Log("press c");
-    //         transform.Translate(5 * Time.deltaTime, 0, 0);
+    //         rb.velocity = new Vector2(1, 1) * 3;
     //     }
+
+    //     // press c let object move to right 
+    //     // if (Input.GetKeyDown(KeyCode.C))
+    //     // {
+    //     //     Debug.Log("press c");
+    //     //     transform.Translate(5 * Time.deltaTime, 0, 0);
+    //     // }
     // }
 }
