@@ -6,11 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 flippedScale = new Vector3(-1, 1, 1);
 
+    bool isFancingRight;
+
     private Rigidbody2D rb;
     private Animator animator;
 
     float moveSpeed = 10f;
     float jumpForce = 1f;
+    // float jumpTimer = 1f;
+    [SerializeField] float hurtForce = 1f;
     bool isOnGround;
 
     int moveChangeAnim;
@@ -30,9 +34,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            TakeDamage();
+        }
         Movement();
         Direction();
         Jump();
+        // test();
     }
 
     private void Movement()
@@ -44,9 +53,11 @@ public class PlayerController : MonoBehaviour
 
         if (moveX > 0)
         {
+            isFancingRight = true;
             moveChangeAnim = 1;
         } else if (moveX < 0)
         {
+            isFancingRight = false;
             moveChangeAnim = -1;
         } else
         {
@@ -119,4 +130,34 @@ public class PlayerController : MonoBehaviour
     {
         animator.ResetTrigger("jump");
     }
+    private void TakeDamage()
+    {
+        StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
+        FindObjectOfType<Health>().Hurt();
+        Debug.Log("TakeDamage isFacingRight: " + isFancingRight);
+
+        if (isFancingRight)
+        {
+            Debug.Log("right_Takedamage");
+
+            rb.velocity = new Vector2(1 , 1) * hurtForce;
+
+        } else 
+        {
+            rb.velocity = new Vector2(-1, 1) * hurtForce;
+        }
+
+        animator.Play("TakeDamage");
+
+    }
+
+    // private void test()
+    // {
+    //     // press c let object move to right 
+    //     if (Input.GetKeyDown(KeyCode.C))
+    //     {
+    //         Debug.Log("press c");
+    //         transform.Translate(5 * Time.deltaTime, 0, 0);
+    //     }
+    // }
 }
