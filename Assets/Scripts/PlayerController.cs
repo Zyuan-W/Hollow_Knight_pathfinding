@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     Vector3 flippedScale = new Vector3(-1, 1, 1);
@@ -11,9 +12,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    const float JUMPTIMER = 0.5f;
+
     float moveSpeed = 10f;
-    float jumpForce = 1f;
-    // float jumpTimer = 1f;
+    float jumpTimer = 0.5f;
+    public float impulseJumpForce = 5.0f;
+    public float continuousJumpForce = 2.0f;
     [SerializeField] float hurtForce = 1f;
     bool isOnGround;
 
@@ -81,16 +85,25 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     { 
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            rb.AddForce(new Vector2(0, jumpForce * 20), ForceMode2D.Impulse);
-
+            Debug.Log("press z once");
+            rb.AddForce(new Vector2(0, impulseJumpForce), ForceMode2D.Impulse);
             animator.SetTrigger("jump");
-
+        }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log("keep pressing z");
+            jumpTimer -= Time.deltaTime;
+            if (jumpTimer > 0)
+            {
+                rb.AddForce(new Vector2(0, continuousJumpForce), ForceMode2D.Force);
+                animator.SetTrigger("jump");
+            }
         }
     }
     // enter ground
-    private void OnConllisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Grounding(collision, false);
     }
@@ -118,6 +131,7 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain") && !isOnGround && collision.contacts[0].normal == Vector2.up)
             {
                 isOnGround = true;
+                JumpCancle();
             } else if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain") && isOnGround && collision.contacts[0].normal == Vector2.down)
             {
                 JumpCancle();
@@ -128,13 +142,15 @@ public class PlayerController : MonoBehaviour
 
     private void JumpCancle()
     {
+        Debug.Log("jump cancle");
         animator.ResetTrigger("jump");
+        jumpTimer = JUMPTIMER;
     }
     private void TakeDamage()
     {
         StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
         FindObjectOfType<Health>().Hurt();
-        Debug.Log("TakeDamage isFacingRight: " + isFancingRight);
+        Debug.Log("TakeDamage isFacingRight");
 
         if (isFancingRight)
         {
