@@ -27,12 +27,15 @@ public class PlayerController : MonoBehaviour
     float moveX;
     float moveY;
 
+    private CinemaShaking cinemaShaking;
+
     // public char jumpButton = 'z';
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        cinemaShaking = FindObjectOfType<CinemaShaking>();
     }
 
     // Update is called once per frame
@@ -148,6 +151,7 @@ public class PlayerController : MonoBehaviour
     }
     private void TakeDamage()
     {
+        cinemaShaking.CinemaShake();
         StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
         FindObjectOfType<Health>().Hurt();
         Debug.Log("TakeDamage isFacingRight");
