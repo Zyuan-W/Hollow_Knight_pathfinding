@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         animator.ResetTrigger("jump");
         jumpTimer = JUMPTIMER;
     }
-    private void TakeDamage()
+    public void TakeDamage()
     {
         cinemaShaking.CinemaShake();
         StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
