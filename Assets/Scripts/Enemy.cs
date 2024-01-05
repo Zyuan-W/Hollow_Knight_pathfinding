@@ -43,11 +43,21 @@ public class Enemy : Breakable
         DetectCollisionEnter2D(collision);
     }
 
+
+
     protected virtual void DetectCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Hero Detector"));
+        // if (collision.gameObject.layer == LayerMask.NameToLayer("Hero Detector"))
+        Debug.Log("collision.gameObject.tag = " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("enemy attack");
             FindObjectOfType<PlayerController>().TakeDamage();
+        }
+        if (collision.gameObject.tag == "test")
+        {
+            Debug.Log("enemy attack test");
+            FindObjectOfType<testMove>().getAttack();
         }
         if (isDead && collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
         {

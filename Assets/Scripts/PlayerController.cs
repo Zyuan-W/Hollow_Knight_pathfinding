@@ -36,18 +36,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         cinemaShaking = FindObjectOfType<CinemaShaking>();
+        hurtAct();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TakeDamage();
-        }
+        // if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     TakeDamage();
+        // }
         Movement();
         Direction();
         Jump();
+
+        // rb.AddForce(new Vector2(10,10), ForceMode2D.Impulse);
         // test();
     }
 
@@ -151,24 +154,32 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage()
     {
+        Debug.Log("Player take damage");
         cinemaShaking.CinemaShake();
         StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
         FindObjectOfType<Health>().Hurt();
-        Debug.Log("TakeDamage isFacingRight");
 
-        if (isFancingRight)
-        {
-            Debug.Log("right_Takedamage");
+        // if (isFancingRight)
+        // {
 
-            rb.velocity = new Vector2(1 , 1) * hurtForce;
+        //     rb.velocity = new Vector2(1, 1) * hurtForce;
 
-        } else 
-        {
-            rb.velocity = new Vector2(-1, 1) * hurtForce;
-        }
+        // } else 
+        // {
+        //     rb.velocity = new Vector2(-1, 1) * hurtForce;
+        // }
+        hurtAct();
+
 
         animator.Play("TakeDamage");
 
+    }
+
+    private void hurtAct()
+    {
+        Debug.Log("hurt act");
+        // rb.AddForce(new Vector2(-1, 0) * hurtForce, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(-1, 0) * hurtForce;
     }
 
     // private void test()
