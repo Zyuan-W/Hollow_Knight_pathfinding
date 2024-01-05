@@ -9,7 +9,7 @@ public class Enemy : Breakable
     public GameObject coin;
     int randomCount;
 
-    [SerializeField]protected int minSpawnCoins = 2;
+    [SerializeField] protected int minSpawnCoins = 2;
     [SerializeField] protected int maxSpawnCoins = 5;
     [SerializeField] protected float maxBumpXForce = 100;
     [SerializeField] protected float minBumpYForce = 300;

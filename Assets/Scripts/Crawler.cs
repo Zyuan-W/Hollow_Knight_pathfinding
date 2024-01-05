@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crawler : MonoBehaviour
+public class Crawler : Enemy
 {
     private Rigidbody2D rb;
     public Collider2D facingDetector;
@@ -11,6 +11,8 @@ public class Crawler : MonoBehaviour
     public GameObject groundCheck;
     public int circleRadius;
     public LayerMask ground;
+    public float hurtForce;
+    bool forceMovement;
     bool isFacingRight;
     bool isDead;
     bool isGrounded;
@@ -83,5 +85,27 @@ public class Crawler : MonoBehaviour
         vector.x *= -1;
         transform.localScale = vector;
 
+    }
+
+    public override void Hurt(int damage, Transform attackPosition)
+    {
+        base.Hurt(damage);
+        Vector2 vector = transform.position - attackPosition.position;
+        StartCoroutine(DelayHurt(vector));
+    }
+
+    IEnumerator DelayHurt(Vector2 vector)
+    {
+        rb.velocity = Vector2.zero;
+        forceMovement = false;
+        if (vector.x > 0)
+        {
+            rb.AddForce(new Vector2(hurtForce, 0), ForceMode2D.Impulse);
+        } else 
+        {
+            rb.AddForce(new Vector2(-hurtForce, 0), ForceMode2D.Impulse);
+        }
+        yield return new WaitForSeconds(0.3f);
+        forceMovement = true;
     }
 }

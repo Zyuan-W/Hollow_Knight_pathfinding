@@ -16,7 +16,15 @@ public class Breakable : MonoBehaviour
         }
     }
 
-    protected virtual void Hurt(int damage, Transform attackPosition)
+    public virtual void Hurt(int damage)
+    {
+        if (!isDead)
+        {
+            health -= damage;
+        }
+    }
+
+    public virtual void Hurt(int damage, Transform attackPosition)
     {
         if (!isDead)
         {
