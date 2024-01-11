@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    const float JUMPTIMER = 0.5f;
+    const float JUMPTIMER = 0.3f;
 
     float moveSpeed = 10f;
-    float jumpTimer = 0.5f;
+    float jumpTimer = 0.3f;
     public float impulseJumpForce = 5.0f;
     public float continuousJumpForce = 2.0f;
     [SerializeField] float hurtForce = 1f;
