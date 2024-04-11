@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Hollow_Knight_demo.sln"
+    "dotnet.defaultSolution": "Hollow_Knight_pathfinding.sln"
 }
