@@ -100,7 +100,9 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.Z))
         {
             Debug.Log("keep pressing z");
-            jumpTimer -= Time.deltaTime;
+            float s_time = Time.deltaTime * 1.4f;
+            // jumpTimer -= Time.deltaTime;
+            jumpTimer -= s_time;
             if (jumpTimer > 0)
             {
                 rb.AddForce(new Vector2(0, continuousJumpForce), ForceMode2D.Force);
