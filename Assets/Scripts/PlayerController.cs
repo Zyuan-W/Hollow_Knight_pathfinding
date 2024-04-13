@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 flippedScale = new Vector3(-1, 1, 1);
 
-    bool isFancingRight;
+    private bool isFancingRight;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -52,6 +52,11 @@ public class PlayerController : MonoBehaviour
 
         // rb.AddForce(new Vector2(10,10), ForceMode2D.Impulse);
         // test();
+    }
+
+    public bool GetFacingDirection()
+    {
+        return isFancingRight;
     }
 
     private void Movement()
