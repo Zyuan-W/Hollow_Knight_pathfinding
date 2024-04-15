@@ -11,7 +11,7 @@ public class TestTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player has entered the trigger");
+            Debug.Log("Player has entered the testTrigger");
             // AstarPath.active.Scan();
             rb.gravityScale = 1;
         }
