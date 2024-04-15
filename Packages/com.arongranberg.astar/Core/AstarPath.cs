@@ -1828,9 +1828,9 @@ public class AstarPath : VersionedMonoBehaviour {
 		watch.Stop();
 		lastScanTime = (float)watch.Elapsed.TotalSeconds;
 
-		if (logPathResults != PathLog.None && logPathResults != PathLog.OnlyErrors) {
-			Debug.Log("Scanned graphs in " + (lastScanTime*1000).ToString("0") + " ms");
-		}
+		// if (logPathResults != PathLog.None && logPathResults != PathLog.OnlyErrors) {
+		// 	Debug.Log("Scanned graphs in " + (lastScanTime*1000).ToString("0") + " ms");
+		// }
 	}
 
 	internal static IEnumerator<Progress> ProgressScanningIteratorsConcurrently (IEnumerator<JobHandle>[] iterators, IGraphUpdatePromise[] promises, bool async) {

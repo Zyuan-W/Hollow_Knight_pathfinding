@@ -115,6 +115,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void attackUP()
+    {
+        Debug.Log("attack up");
+        
+    }
     // enter ground
     private void OnCollisionEnter2D(Collision2D collision)
     {

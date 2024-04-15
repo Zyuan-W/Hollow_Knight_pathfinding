@@ -27,7 +27,7 @@ public class FireballAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Enemy").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         
         InvokeRepeating("UpdatePath", 0f, .5f); // update path every 0.5 seconds
         // seeker.StartPath(rb.position, target.position, OnPathComplete);

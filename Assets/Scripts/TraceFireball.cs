@@ -4,30 +4,41 @@ using UnityEngine;
 
 public class TraceFireball : MonoBehaviour
 {
-    private PlayerController playerController;
+    // private PlayerController playerController;
 
     public GameObject traceFireBallPrefab;
 
+    public float fireBallSpeed = 5f;
+
+    public float fireBallFrequency = 5f;
+
     public float fireBallLifeTime = 20f;
 
-    // Update is called once per frame
-    void Update()
+   
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        StartCoroutine(ShootFireballRoutine());
+    }
+
+    IEnumerator ShootFireballRoutine()
+    {
+        while (true)
         {
+            yield return new WaitForSeconds(fireBallFrequency);
             ShootTraceFireBall();
         }
     }
 
     void ShootTraceFireBall()
     {
-        playerController = GameObject.FindObjectOfType<PlayerController>();
-        bool isFancingRight = playerController.GetFacingDirection();
-        Vector2 shootDirection = isFancingRight ? Vector2.right : Vector2.left;
+        // playerController = GameObject.FindObjectOfType<PlayerController>();
+        // bool isFancingRight = playerController.GetFacingDirection();
+        // Vector2 shootDirection = isFancingRight ? Vector2.right : Vector2.left;
+        Vector2 shootDirection = Vector2.down;
 
         GameObject traceFireBall = Instantiate(traceFireBallPrefab, (Vector2)transform.position + (Vector2)shootDirection, Quaternion.identity);
         
-        traceFireBall.layer = LayerMask.NameToLayer("Fireball");
+        traceFireBall.layer = LayerMask.NameToLayer("TraceFireball");
         // Rigidbody2D rb = traceFireBall.GetComponent<Rigidbody2D>();
         // rb.velocity = shootDirection * 5f;
         Destroy(traceFireBall, fireBallLifeTime);
