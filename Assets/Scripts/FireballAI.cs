@@ -18,7 +18,9 @@ public class FireballAI : MonoBehaviour
     bool reachedEndOfPath = false;
 
     Seeker seeker;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+
+    private Vector2 t_direction;
 
 
 
@@ -38,6 +40,7 @@ public class FireballAI : MonoBehaviour
         if (seeker.IsDone())
         {
 
+            updateTarget(target);
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
     }
@@ -49,6 +52,11 @@ public class FireballAI : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+
+    void updateTarget(Transform target)
+    {
+        this.target = target;
     }
 
     // Update is called once per frame
@@ -71,6 +79,7 @@ public class FireballAI : MonoBehaviour
 
         // move enemy
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized; // direction to next waypoint
+        t_direction = direction;
         Vector2 force = direction * speed * Time.deltaTime;
 
         rb.AddForce(force);
@@ -82,5 +91,10 @@ public class FireballAI : MonoBehaviour
             currentWaypoint++;
         }
 
+    }
+
+    public Vector2 getDirection()
+    {
+        return t_direction;
     }
 }

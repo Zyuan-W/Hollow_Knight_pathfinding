@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         if (exitState)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain")) 
             {
                 isOnGround = false;
             }
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player take damage");
         cinemaShaking.CinemaShake();
         StartCoroutine(GetComponent<Invisibility>().SetInvincibility());
-        FindObjectOfType<Health>().Hurt();
+        // FindObjectOfType<Health>().Hurt();
 
         // if (isFancingRight)
         // {

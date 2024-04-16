@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 198622229315939187}
   - component: {fileID: 4779333767062468021}
   - component: {fileID: 4010754793884119369}
-  - component: {fileID: 7813890296174999541}
   - component: {fileID: 7401151508884302771}
+  - component: {fileID: 7813890296174999541}
   m_Layer: 0
   m_Name: Enemy_fly
   m_TagString: Enemy
@@ -98,22 +98,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7813890296174999541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902433906221448981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6ad1cbe0aae49c4870b5ea82f9b307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 400
-  nextWaypointDistance: 3
-  enemyGFX: {fileID: 198622229315939187}
 --- !u!114 &7401151508884302771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +125,23 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -1
+    value: 1
+--- !u!114 &7813890296174999541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902433906221448981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6ad1cbe0aae49c4870b5ea82f9b307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 400
+  nextWaypointDistance: 3
+  enemyGFX: {fileID: 198622229315939187}
 --- !u!1 &9179264609988362945
 GameObject:
   m_ObjectHideFlags: 0

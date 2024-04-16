@@ -10,13 +10,14 @@ public class TraceFireball : MonoBehaviour
 
     public float fireBallSpeed = 5f;
 
-    public float fireBallFrequency = 5f;
+    public float fireBallFrequency = 3f;
 
-    public float fireBallLifeTime = 20f;
+    public float fireBallLifeTime = 8f;
 
    
     void Start()
     {
+        ShootTraceFireBall();
         StartCoroutine(ShootFireballRoutine());
     }
 

@@ -19,7 +19,7 @@ public class DestroyOnCollision : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             enemyManager.DestroyOneEnemy();
-            enemyManager.RespawnEnemy();
+            // enemyManager.RespawnEnemy();
         } else 
         {
             Destroy(gameObject);
