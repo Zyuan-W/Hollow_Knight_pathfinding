@@ -48,7 +48,7 @@ public class Enemy : Breakable
     protected virtual void DetectCollisionEnter2D(Collision2D collision)
     {
         // if (collision.gameObject.layer == LayerMask.NameToLayer("Hero Detector"))
-        Debug.Log("collision.gameObject.tag = " + collision.gameObject.tag);
+        // Debug.Log("collision.gameObject.tag = " + collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("enemy attack");

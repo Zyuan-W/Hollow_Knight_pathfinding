@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
+using TMPro.Examples;
 
 
 public class TraceFireballBehavior : MonoBehaviour
@@ -19,6 +20,8 @@ public class TraceFireballBehavior : MonoBehaviour
     private CapsuleCollider2D bossCollider;
 
     public float reboundForce = 5f;
+
+    // public int hitBoss = 0;
 
     private void Start()
     {
@@ -52,6 +55,8 @@ public class TraceFireballBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Block")
         {
             Debug.Log("Fireball hit the Block");
+            // hitBoss += 1;
+            // Debug.Log("Hit Boss: " + hitBoss);
             fireballAI = GameObject.FindObjectOfType<FireballAI>();
             // enemy = GameObject.FindWithTag("Boss");
             fireballAI.target = enemy.transform;
@@ -65,16 +70,16 @@ public class TraceFireballBehavior : MonoBehaviour
             // Debug.Log("Fireball direction: " + direaction);
 
             Vector2 direction = fireballAI.getDirection();
-            Debug.Log("Fireball direction2: " + direction);
+            // Debug.Log("Fireball direction2: " + direction);
             //reverse the direction
             Vector2 reboundVelocity = -direction * reboundForce;
             // print the direction
-            Debug.Log("Rebound direction: " + reboundVelocity);
+            // Debug.Log("Rebound direction: " + reboundVelocity);
             rb.velocity = reboundVelocity;
 
-            Debug.Log("Fireball rebound");
+            // Debug.Log("Fireball rebound");
 
-            fireballAI.speed = 400f;
+            fireballAI.speed = 700f;
 
             // activate collider
             Physics2D.IgnoreCollision(fireballCollider, bossCollider, false);

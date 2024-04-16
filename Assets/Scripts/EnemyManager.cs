@@ -23,32 +23,32 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         // Spawn initial enemy when the game starts
-        // SpawnInitialEnemy();
+        SpawnInitialEnemy();
     }
 
-    // private void SpawnInitialEnemy()
-    // {
-    //     Vector2 initialSpawnPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-    //     var initialEnemy = Instantiate(enemyPrefab, initialSpawnPosition, Quaternion.identity);
-    //     activeEnemies.Add(initialEnemy);  // Add the initial enemy to the list
-    //     Debug.Log("Initial enemy spawned");
-    // }
-    // public void RespawnEnemy()
-    // {
+    private void SpawnInitialEnemy()
+    {
+        Vector2 initialSpawnPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        var initialEnemy = Instantiate(enemyPrefab, initialSpawnPosition, Quaternion.identity);
+        activeEnemies.Add(initialEnemy);  // Add the initial enemy to the list
+        Debug.Log("Initial enemy spawned");
+    }
+    public void RespawnEnemy()
+    {
 
-    //     if (respawnTimes >= 3)
-    //     {
-    //         Debug.Log("Enemy respawn more than 2 times");
-    //         return;
-    //     }
-    //     Vector2 spawnPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-    //     var enemy1 = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-    //     var enemy2 = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-    //     activeEnemies.Add(enemy1);
-    //     activeEnemies.Add(enemy2);
-    //     respawnTimes++;
-    //     Debug.Log("Enemy Respawned");
-    // }
+        if (respawnTimes >= 3)
+        {
+            Debug.Log("Enemy respawn more than 2 times");
+            return;
+        }
+        Vector2 spawnPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        var enemy1 = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        var enemy2 = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        activeEnemies.Add(enemy1);
+        activeEnemies.Add(enemy2);
+        respawnTimes++;
+        Debug.Log("Enemy Respawned");
+    }
 
     public void DestroyOneEnemy()
     {

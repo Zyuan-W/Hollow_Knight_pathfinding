@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     private void hurtAct()
     {
-        Debug.Log("hurt act");
+        // Debug.Log("hurt act");
         // rb.AddForce(new Vector2(-1, 0) * hurtForce, ForceMode2D.Impulse);
         rb.velocity = new Vector2(-1, 0) * hurtForce;
     }

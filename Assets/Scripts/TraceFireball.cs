@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class TraceFireball : MonoBehaviour
@@ -10,13 +11,18 @@ public class TraceFireball : MonoBehaviour
 
     public float fireBallSpeed = 5f;
 
-    public float fireBallFrequency = 3f;
+    public float fireBallFrequency;
 
     public float fireBallLifeTime = 8f;
+
+    // private TraceFireballBehavior traceFireballBehavior;
+    // private HitCounter hitCounter;
+
 
    
     void Start()
     {
+        // hitCounter = GameObject.FindObjectOfType<HitCounter>();
         ShootTraceFireBall();
         StartCoroutine(ShootFireballRoutine());
     }
@@ -26,7 +32,16 @@ public class TraceFireball : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fireBallFrequency);
-            ShootTraceFireBall();
+            ShootTraceFireBall(); 
+
+            // int hitCount = hitCounter.GetHitsCount();
+            // check if boss has been hit 3 times to increase the shooting frequency
+            // if (hitCount >= 3 && fireBallFrequency >= 1.5f)
+            // {
+                
+            //     Debug.Log("Boss has been hit 3 times, increasing fireball frequency");
+            //     fireBallFrequency = fireBallFrequency / 2;
+            // }
         }
     }
 

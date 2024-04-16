@@ -9,6 +9,7 @@ TagManager:
   - test
   - Boss
   - Block
+  - TraceFireball
   layers:
   - Default
   - TransparentFX

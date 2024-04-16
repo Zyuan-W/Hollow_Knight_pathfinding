@@ -10,15 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 655859772793011610}
   - component: {fileID: 7201181994996528561}
+  - component: {fileID: 2078227424548224024}
   - component: {fileID: 7473353927593740279}
   - component: {fileID: 8131497564715240235}
   - component: {fileID: 7932809757684107077}
-  - component: {fileID: 2078227424548224024}
   - component: {fileID: 848858099266480527}
   - component: {fileID: 5442106716129924158}
   m_Layer: 9
   m_Name: TraceFireball
-  m_TagString: Untagged
+  m_TagString: TraceFireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,6 +67,21 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 2
+--- !u!114 &2078227424548224024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3669102126117049097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b650735221f418ea87ee85f3c47eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 400
+  nextWaypointDistance: 3.36
 --- !u!50 &7473353927593740279
 Rigidbody2D:
   serializedVersion: 4
@@ -167,21 +182,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2078227424548224024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3669102126117049097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1b650735221f418ea87ee85f3c47eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 400
-  nextWaypointDistance: 3.36
 --- !u!114 &848858099266480527
 MonoBehaviour:
   m_ObjectHideFlags: 0
